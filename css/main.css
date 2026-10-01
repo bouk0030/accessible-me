@@ -1,71 +1,254 @@
+/* AI prompt: "Give me version 3"
+   Purpose: Improve the design, readability, and keyboard focus styles. */
+
+/* Include padding and borders in element widths. */
+* {
+  box-sizing: border-box;
+}
+
+/* Use readable text and a light page background. */
 body {
-  font-family: 'Roboto', Helvetica, sans-serif;
-  background-color: grey;
   margin: 0;
-  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1f2937;
+  background-color: #f3f4f6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Stick No Bills', 'Roboto', Helvetica, sans-serif;
-}
-
+/* Keep the page centered and leave space on small screens. */
 .container {
-  max-width: 1080px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
-img {
-  width: 100%;
+/* Give the header a dark background. */
+.site-header {
+  overflow: hidden;
+  color: #ffffff;
+  background-color: #172554;
+  border-radius: 12px;
 }
 
+.site-header h1 {
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 2.25rem;
+}
+
+/* Let navigation links wrap when there is less space. */
 .main-nav ul {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.75rem;
   margin: 0;
-  padding: 0;
+  padding: 0 1.5rem 1.5rem;
+  list-style: none;
 }
 
-.main-nav ul li {
-  flex: 1;
-  text-align: center;
+.main-nav a {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  color: #ffffff;
+  background-color: #1e3a8a;
+  border-radius: 6px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
-.main-nav ul li a {
+.main-nav a:hover {
+  color: #172554;
+  background-color: #ffffff;
+}
+
+/* Resize the decorative banner without stretching it. */
+.banner {
   display: block;
-  color: inherit;
-  text-decoration: none;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Give each section space and a clear background. */
+.main-content {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.main-content section {
+  min-width: 0;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #6b7280;
+  border-radius: 12px;
+}
+
+/* Keep headings easy to read. */
+h2,
+h3 {
+  color: #172554;
+  line-height: 1.3;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+
+h3 {
   font-size: 1.25rem;
 }
 
-form input,
-form textarea {
-  display: block;
+/* Underlines help users recognize links without relying on color. */
+a {
+  color: #1e40af;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+a:hover {
+  text-decoration-thickness: 3px;
+}
+
+/* Show keyboard users which control has focus.
+   Two colors keep the outline visible on light and dark backgrounds. */
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid #111827;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #ffffff;
+}
+
+/* Show where users land after following the skip link. */
+#main-content:focus {
+  outline: 3px solid #111827;
+  outline-offset: 3px;
+}
+
+.owner ul {
+  padding-left: 1.5rem;
+}
+
+.owner li {
+  margin-bottom: 0.5rem;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Put labels above their fields. */
+form {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 650px;
+}
+
+label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Use the same readable font for all form controls. */
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
   width: 100%;
-  margin-bottom: 1rem;
-  padding: .5rem 1rem;
+  padding: 0.8rem;
+  color: #111827;
+  background-color: #ffffff;
+  border: 2px solid #6b7280;
+  border-radius: 6px;
 }
 
-form textarea {
+/* Let users make the message box taller. */
+textarea {
   min-height: 150px;
-  max-height: 150px;
-  height: 150px;
-  resize: none;
+  resize: vertical;
 }
 
-form button {
-  background: none;
-  border: 2px solid black;
+#form-note {
   padding: 1rem;
-  text-transform: uppercase;
+  color: #1f2937;
+  background-color: #eff6ff;
+  border-left: 4px solid #1e40af;
+}
+
+/* Make the submit button easy to see and select. */
+button {
+  justify-self: start;
+  margin-top: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  color: #ffffff;
+  background-color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #172554;
+  border-color: #172554;
 }
 
 .site-footer {
-  padding: 2rem 0;
+  padding: 1rem;
+  color: #ffffff;
+  background-color: #172554;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Hide the skip link visually until it receives keyboard focus. */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  background-color: #172554;
+  transform: translateY(-200%);
+}
+
+/* Show the skip link when the user presses Tab. */
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Reduce spacing on smaller screens. */
+@media (max-width: 600px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .site-header h1 {
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .main-nav ul {
+    padding: 0 1rem 1rem;
+  }
+
+  .main-content section {
+    padding: 1rem;
+  }
+
+  .banner {
+    height: 200px;
+  }
 }
