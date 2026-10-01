@@ -4,23 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Learn about Jam Box Studios and contact the studio.">
   <title>Jam Box Studios | Accessible Me</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Stick+No+Bills:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Stick+No+Bills:wght@300&display=swap"
+        rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <!-- AI prompt: "Correct semantic HTML, heading structure, image
-       accessibility, navigation targets, and form labels in this page."
-       Intent: Make the page structure and contact form easier to use.
-       Rewrite this explanation in your own words after reviewing the code. -->
+  <!-- AI prompt: "GIVE ME VERSION 2"
+       Purpose: Add Schema information and accessible section labels.
+       Follow-up: "do comments on the version 2 html code non Ai and simple comments"
+       Purpose: Make the explanations easier to understand. -->
 
-  <div class="container">
+  <!-- Schema identifies the business and its information. -->
+  <div class="container"
+       itemscope
+       itemtype="https://schema.org/Organization">
+
+    <!-- The header contains the site name and navigation. -->
     <header class="site-header" id="home">
-      <h1>Jam Box Studios</h1>
+      <h1 itemprop="name">Jam Box Studios</h1>
 
+      <!-- These links take users to sections on this page. -->
       <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -30,51 +40,105 @@
         </ul>
       </nav>
 
-      <!-- The random banner is decorative, so its alternative text is empty. -->
-      <img src="https://picsum.photos/1200/900" class="banner" alt="">
+      <!-- The random image is decorative, so the alt text is empty. -->
+      <img src="https://picsum.photos/1200/900"
+           class="banner"
+           alt=""
+           width="1200"
+           height="900">
     </header>
 
+    <!-- This is the main content and the destination for a future skip link. -->
     <main class="main-content" id="main-content" tabindex="-1">
-      <section id="welcome">
-        <h2>Welcome to Jam Box</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laboriosam praesentium nostrum ipsa eveniet, officia deserunt cumque eius esse enim, ipsam accusantium autem nihil quaerat sequi perferendis optio quia veritatis.</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam perferendis expedita sed itaque odit ipsam omnis, eos voluptates magni fugit culpa voluptatibus, inventore eaque, eligendi voluptatum! Voluptate iusto error voluptatibus.</p>
+
+      <!-- The heading gives this section an accessible name. -->
+      <section id="welcome" aria-labelledby="welcome-heading">
+        <h2 id="welcome-heading">Welcome to Jam Box</h2>
+        <p itemprop="description">
+          Welcome to Jam Box Studios. Explore our studio information,
+          meet the owner, and find out how to contact us.
+        </p>
+        <p>
+          Have a question about the studio? Visit the contact section
+          below to find our contact form.
+        </p>
       </section>
 
-      <section class="owner" id="owner">
-        <h2>Meet the owner</h2>
-        <ul>
-          <li>Name: John Doe</li>
-          <li>Title: CEO</li>
-          <li>Email: <a href="mailto:johnjoe@jambox.ca">johnjoe@jambox.ca</a></li>
-          <li>Phone: <a href="tel:+16130000000">613-000-0000</a></li>
-        </ul>
+      <section class="owner" id="owner" aria-labelledby="owner-heading">
+        <h2 id="owner-heading">Meet the owner</h2>
 
+        <!-- Schema describes the owner and his contact details. -->
+        <div itemprop="founder"
+             itemscope
+             itemtype="https://schema.org/Person">
+          <ul>
+            <li>Name: <span itemprop="name">John Doe</span></li>
+            <li>Title: <span itemprop="jobTitle">CEO</span></li>
+            <li>
+              Email:
+              <a href="mailto:johnjoe@jambox.ca" itemprop="email">
+                johnjoe@jambox.ca
+              </a>
+            </li>
+            <li>
+              Phone:
+              <a href="tel:+16130000000" itemprop="telephone">
+                613-000-0000
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- This heading is one level below the section heading. -->
         <h3>Address</h3>
-        <address>
+
+        <!-- Schema identifies each part of the sample address. -->
+        <address itemprop="address"
+                 itemscope
+                 itemtype="https://schema.org/PostalAddress">
           Jam Box Studios<br>
-          123 Guitar Road<br>
-          Musicville, Danceistan<br>
-          B3T 0L0
+          <span itemprop="streetAddress">123 Guitar Road</span><br>
+          <span itemprop="addressLocality">Musicville</span>,
+          <span itemprop="addressCountry">Danceistan</span><br>
+          <span itemprop="postalCode">B3T 0L0</span>
         </address>
       </section>
 
-      <section class="contact-section" id="contact">
-        <h2>Contact Us</h2>
+      <section class="contact-section"
+               id="contact"
+               aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Us</h2>
 
-        <!-- Each label identifies its field through matching for and id values. -->
-        <form action="thanks.html" method="get">
+        <!-- This note explains that the form is only a demonstration. -->
+        <p id="form-note">
+          This is a demonstration form. Messages are not delivered.
+          Do not enter personal or sensitive information.
+        </p>
+
+        <!-- The form uses the heading and note for its name and description. -->
+        <form action="thanks.html"
+              method="get"
+              aria-labelledby="contact-heading"
+              aria-describedby="form-note">
+
+          <!-- Each label is connected to its input by a matching ID. -->
           <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" name="full-name"
+          <input type="text"
+                 id="full-name"
+                 name="full-name"
                  autocomplete="name">
 
+          <!-- The email input checks the format of an entered email address. -->
           <label for="email">Email</label>
-          <input type="email" id="email" name="email"
+          <input type="email"
+                 id="email"
+                 name="email"
                  autocomplete="email">
 
           <label for="subject">Subject</label>
           <input type="text" id="subject" name="subject">
 
+          <!-- The larger text box gives users space to write a message. -->
           <label for="message">Your Message</label>
           <textarea id="message" name="message" rows="6"></textarea>
 
@@ -83,8 +147,9 @@
       </section>
     </main>
 
+    <!-- The footer contains the copyright information. -->
     <footer class="site-footer">
-      <p>&copy; 2021 Jam Box Studios</p>
+      <p>&copy; 2026 Jam Box Studios</p>
     </footer>
   </div>
 </body>
